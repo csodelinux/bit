@@ -32,12 +32,8 @@ success "Cloned successfully into ./${CLONE_DIR}"
 
 # Run the installer from the dev branch
 log "Running installer from dev branch..."
-cd "$CLONE_DIR/scripts" || {
-    error "Installer script not found!"
-    exit 1
-}
-
-bash scripts/install.sh
+cd "$CLONE_DIR"
+bash install.sh
 
 cd ../..
 
