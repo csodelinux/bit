@@ -10,12 +10,12 @@ This idea make files are great but there was one issue if all I wanted to do was
 *** Stable branch (Recommended) : 
 This branch is the tried and tested one so clone the repo and run the curl script.  
 #+BEGIN_SRC bash
-curl -fsSL https://gitlab.com/csodelinux | sh
+curl -sSL https://github.com/csodelinux/bit/script/stable.sh | bash
 #+END_SRC 
 *** DEV branch : 
 This branch is the tried and tested one so clone the repo and run the curl script.  
 #+BEGIN_SRC bash
-curl -fsSL https://gitlab.com/csodelinux | sh
+curl -sSL https://github.com/csodelinux/bit/script/dev.sh | bash
 #+END_SRC 
 *** Source : 
 If you want to build it from source the instrutions are in [[file:docs/BUILD.org][build]].
