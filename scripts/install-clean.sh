@@ -39,18 +39,15 @@ option_shower() {
         error "User chose to exit."
         exit 1
     fi
-    clear
 }
 
 option_display() {
-    clear
     echo -e "${CYAN}Bit Installer Options${RESET}"
     echo "a) System install (make install)"
     echo "b) Local build (make build)"
     echo "r) Remove bit from system (/usr/local/bin/bit)"
     read -p "Choose an option [a/b/r]: " option
 
-    clear
     case "$option" in
         a)
             print_section "Performing System Installation"
@@ -158,12 +155,10 @@ install_compiler() {
         exit 1
     fi
     sleep 1
-    clear
 }
 
 # ========== Entrypoint ==========
 main() {
-    clear
     print_section "Bit Installer"
     detect_distro
     option_shower
