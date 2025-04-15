@@ -37,7 +37,7 @@ cd "$CLONE_DIR/scripts" || {
     exit 1
 }
 
-bash install.sh
+bash script/install.sh
 
 cd ../..
 
