@@ -1,0 +1,17 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="32" cy="32" r="30" fill="#2c3e50"/>
+  
+  <!-- Main "B" Shape -->
+  <path d="M22 12 L22 52 L36 52 C43 52 48 47 48 40 C48 35 43 30 38 29 C42 28 45 24 45 19 C45 14 40 12 36 12 Z" fill="#3498db"/>
+  
+  <!-- Inner "B" Shape -->
+  <path d="M28 17 L28 30 L34 30 C38 30 40 27 40 23 C40 19 38 17 34 17 Z" fill="#2c3e50"/>
+  <path d="M28 34 L28 47 L34 47 C39 47 42 44 42 40 C42 36 39 34 34 34 Z" fill="#2c3e50"/>
+  
+  <!-- Binary Dot -->
+  <circle cx="50" cy="20" r="2" fill="#2ecc71"/>
+  <circle cx="50" cy="28" r="2" fill="#2ecc71"/>
+  <circle cx="50" cy="36" r="2" fill="#2ecc71"/>
+  <circle cx="50" cy="44" r="2" fill="#2ecc71"/>
+</svg>

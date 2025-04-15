@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bit - Minimal Build Tool</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="images/bit-favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/bit-logo.svg" alt="Bit Logo" class="logo">
+        </div>
+        <h1>Bit</h1>
+        <p>A Minimal Build Tool for C/C++ Projects</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#documentation">Documentation</a></li>
+            <li><a href="#reference">Reference</a></li>
+            <li><a href="#contribution">Contribution</a></li>
+        </ul>
+    </nav>
+    
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Simplify Your C/C++ Build Process</h1>
+            <p>Bit is a lightweight build tool designed to make C/C++ project compilation easy and straightforward. No complex configurations, just a single build.bit file to define your project.</p>
+            <div class="cta-buttons">
+                <a href="#installation" class="btn">Get Started</a>
+                <a href="https://github.com/csodelinux/bit" class="btn btn-secondary">View on GitHub</a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section class="features">
+            <div class="feature">
+                <h3>Simple Configuration</h3>
+                <p>Configure your build with a single build.bit file using predefined variables. No need to learn complex build systems.</p>
+            </div>
+            <div class="feature">
+                <h3>Efficient Compilation</h3>
+                <p>Compile your C/C++ projects with minimal overhead. Bit focuses on getting your code built, not on complicated rules.</p>
+            </div>
+            <div class="feature">
+                <h3>Easy Installation</h3>
+                <p>Install with a single command. Choose between stable or development versions based on your needs.</p>
+            </div>
+        </section>
+        
+        <section id="installation" class="section">
+            <h2 class="section-title">Installation</h2>
+            <p>There are multiple ways to install Bit. Choose the method that works best for you:</p>
+            
+            <div class="install-options">
+                <div class="install-option">
+                    <h3>Quick Install (Stable)</h3>
+                    <pre>curl -fsSL https://raw.githubusercontent.com/csodelinux/bit/main/scripts/stable.sh | bash</pre>
+                    <p>Installs the latest stable version of Bit.</p>
+                </div>
+                <div class="install-option">
+                    <h3>Development Version</h3>
+                    <pre>curl -fsSL https://raw.githubusercontent.com/csodelinux/bit/main/scripts/dev.sh | bash</pre>
+                    <p>Installs the latest development version with newest features.</p>
+                </div>
+                <div class="install-option">
+                    <h3>Build from Source</h3>
+                    <pre>git clone https://github.com/csodelinux/bit.git
+cd bit
+make install</pre>
+                    <p>Clone the repository and build it yourself.</p>
+                </div>
+            </div>
+            
+            <h3>Dependencies</h3>
+            <p>To build Bit from source, you need:</p>
+            <ul style="list-style-position: inside; margin-bottom: 1.5rem;">
+                <li>makefiles</li>
+                <li>G++ or clang++</li>
+                <li>C++ 17 compatible compiler</li>
+            </ul>
+            
+            <h3>Uninstallation</h3>
+            <p>To remove Bit from your system:</p>
+            <pre>curl -fsSL https://raw.githubusercontent.com/csodelinux/bit/main/scripts/uninstall.sh | bash</pre>
+        </section>
+        
+        <section id="documentation" class="section">
+            <h2 class="section-title">Documentation</h2>
+            
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab(event, 'getting-started')">Getting Started</button>
+                <button class="tab-button" onclick="openTab(event, 'usage')">Usage</button>
+                <button class="tab-button" onclick="openTab(event, 'examples')">Examples</button>
+            </div>
+            
+            <div id="getting-started" class="tab-content active">
+                <h3>Getting Started with Bit</h3>
+                <p>Bit simplifies the C/C++ build process by using a straightforward configuration file named <code>build.bit</code>.</p>
+                
+                <h4>Create Your First Project</h4>
+                <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    <li>Create a new directory for your project</li>
+                    <li>Create a <code>build.bit</code> file in the root of your project</li>
+                    <li>Add your source files to the project directory</li>
+                    <li>Define your build configuration in the <code>build.bit</code> file</li>
+                    <li>Run <code>bit</code> in your project directory to build</li>
+                </ol>
+                
+                <h4>Basic build.bit File</h4>
+                <pre>compiler = g++
+compiler_flag = -Wall -Werror -std=c++17
+build_file = my_program
+source_file = main.cpp
+build_type = executable</pre>
+            </div>
+            
+            <div id="usage" class="tab-content">
+                <h3>Using Bit</h3>
+                <p>Bit reads the <code>build.bit</code> file in your project directory and uses the configuration to compile your project.</p>
+                
+                <h4>Running Bit</h4>
+                <p>Simply navigate to your project directory and run:</p>
+                <pre>bit</pre>
+                <p>This will read your <code>build.bit</code> file and compile your project according to the specified configuration.</p>
+                
+                <h4>Configuration Options</h4>
+                <p>Your <code>build.bit</code> file can include the following variables:</p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    <li><code>compiler</code>: The compiler to use (e.g., g++, clang++)</li>
+                    <li><code>compiler_flag</code>: Compiler flags to use</li>
+                    <li><code>build_file</code>: Name of the output file</li>
+                    <li><code>build_dir</code>: Directory for output files</li>
+                    <li><code>source_file</code>: Source file(s) to compile</li>
+                    <li><code>build_type</code>: Type of build (executable or library)</li>
+                </ul>
+            </div>
+            
+            <div id="examples" class="tab-content">
+                <h3>Example Projects</h3>
+                
+                <h4>Simple Executable</h4>
+                <pre>compiler = g++
+compiler_flag = -Wall -std=c++17
+build_file = hello
+source_file = hello.cpp
+build_type = executable</pre>
+                
+                <h4>Multiple Source Files</h4>
+                <pre>compiler = g++
+compiler_flag = -Wall -std=c++17
+build_file = test
+source_file = main.cpp utils.cpp config.cpp
+build_type = executable</pre>
+                
+                <h4>Creating a Library</h4>
+                <pre>compiler = g++
+compiler_flag = -Wall -std=c++17 -fPIC
+build_file = libmylib.so
+source_file = lib.cpp helper.cpp
+build_dir = lib/
+build_type = library</pre>
+                
+                <h4>Debug Build</h4>
+                <pre>compiler = g++
+compiler_flag = -Wall -g -O0 -std=c++17
+build_file = debug_app
+source_file = main.cpp
+build_dir = debug/
+build_type = executable</pre>
+            </div>
+        </section>
+        
+        <section id="reference" class="section">
+            <h2 class="section-title">Reference</h2>
+            <p>The following variables are available in the <code>build.bit</code> configuration file:</p>
+            
+            <table class="reference-table">
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>compiler</code></td>
+                        <td>The compiler to use for the build</td>
+                        <td><code>compiler = g++</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>compiler_flag</code></td>
+                        <td>Compiler flags to use</td>
+                        <td><code>compiler_flag = -Wall -Werror -std=c++17</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>build_file</code></td>
+                        <td>Name of the output file</td>
+                        <td><code>build_file = test</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>build_dir</code></td>
+                        <td>Directory for output files</td>
+                        <td><code>build_dir = bin/</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>source_file</code></td>
+                        <td>Source file(s) to compile</td>
+                        <td><code>source_file = main.cpp utils.cpp</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>build_type</code></td>
+                        <td>Type of build (executable or library)</td>
+                        <td><code>build_type = executable</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>Bit does not allow custom variable names. You must use the predefined variables listed above.</p>
+        </section>
+        
+        <section id="contribution" class="section">
+            <h2 class="section-title">Contribution</h2>
+            <p>Contributions to Bit are welcome! Here's how you can contribute:</p>
+            
+            <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                <li>Fork the repository</li>
+                <li>Create your feature branch (<code>git checkout -b feature/feature</code>)</li>
+                <li>Commit your changes (<code>git commit -m 'Add some feature'</code>)</li>
+                <li>Push to the branch (<code>git push origin feature/feature</code>)</li>
+                <li>Open a Pull Request</li>
+            </ol>
+            
+            <p>Before submitting your contribution, make sure your code follows the project's coding style and passes all tests.</p>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Bit - A Minimal Build Tool for C/C++ Projects</p>
+            <p>Released under the MIT License</p>
+            <div class="footer-links">
+                <a href="https://github.com/csodelinux/bit">GitHub</a>
+                <a href="https://github.com/csodelinux/bit/issues">Report Issues</a>
+                <a href="#contribution">Contribute</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
