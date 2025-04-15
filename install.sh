@@ -14,27 +14,29 @@ error()     { echo -e "${RED}[ERROR]${RESET} $1"; }
 success()   { echo -e "${GREEN}[OK]${RESET} $1"; }
 print_section() { echo -e "\n${CYAN}==> $1${RESET}"; }
 
-# ========== Installer Options ==========
+# ========== Installer Logic ==========
 show_menu() {
-    echo -e "${CYAN}Bit Installer Options${RESET}"
-    echo "a) System install (make install or manual copy)"
-    echo "r) Remove Bit from system (/usr/local/bin/bit)"
-    read -p "Choose an option [a/r]: " option
+    local option="${BIT_OPTION:-}"
+
+    if [[ -z "$option" && -t 0 ]]; then
+        echo -e "${CYAN}Bit Installer Options${RESET}"
+        echo "a) System install (make install or manual copy)"
+        echo "r) Remove Bit from system (/usr/local/bin/bit)"
+        read -p "Choose an option [a/r]: " option
+    fi
 
     case "$option" in
         a)
             print_section "Performing System Installation"
             if [[ -f Makefile ]]; then
                 sudo make install
-            else
+            elif [[ -f bit ]]; then
                 sudo install -m 755 bit /usr/local/bin/bit
-            fi
-            if [[ $? -eq 0 ]]; then
-                success "Bit installed system-wide to /usr/local/bin/bit"
             else
-                error "Installation failed."
+                error "'bit' binary not found. Aborting."
                 exit 1
             fi
+            success "Bit installed system-wide to /usr/local/bin/bit"
             ;;
         r)
             print_section "Removing Bit"
@@ -46,12 +48,10 @@ show_menu() {
             fi
             ;;
         *)
-            error "Invalid input. Please choose 'a' or 'r'."
-            sleep 1
-            show_menu
+            error "Invalid or missing input. Set BIT_OPTION=a or r"
+            exit 1
             ;;
     esac
-    echo
     success "Exiting Bit installer."
 }
 
