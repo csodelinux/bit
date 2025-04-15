@@ -1,0 +1,4 @@
+compiler=gcc
+flags=-Wall
+source_file = main.c
+build_type = executable

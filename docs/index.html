@@ -158,7 +158,7 @@ make install</pre>
                 <h4><i class="fas fa-file-code"></i> Basic build.bit File</h4>
                 <div class="code-block">
                     <pre>compiler = g++
-compiler_flag = -Wall -Werror -std=c++17
+flags = -Wall -Werror -std=c++17
 build_file = my_program
 source_file = main.cpp
 build_type = executable</pre>
@@ -186,7 +186,7 @@ build_type = executable</pre>
                         <div class="option-desc">The compiler to use (e.g., g++, clang++)</div>
                     </div>
                     <div class="config-option">
-                        <div class="option-name"><code>compiler_flag</code></div>
+                        <div class="option-name"><code>flags</code></div>
                         <div class="option-desc">Compiler flags to use</div>
                     </div>
                     <div class="config-option">
@@ -216,7 +216,7 @@ build_type = executable</pre>
                         <h4><i class="fas fa-file-code"></i> Simple Executable</h4>
                         <div class="code-block">
                             <pre>compiler = g++
-compiler_flag = -Wall -std=c++17
+flags = -Wall -std=c++17
 build_file = hello
 source_file = hello.cpp
 build_type = executable</pre>
@@ -228,7 +228,7 @@ build_type = executable</pre>
                         <h4><i class="fas fa-layer-group"></i> Multiple Source Files</h4>
                         <div class="code-block">
                             <pre>compiler = g++
-compiler_flag = -Wall -std=c++17
+flags = -Wall -std=c++17
 build_file = test
 source_file = main.cpp utils.cpp config.cpp
 build_type = executable</pre>
@@ -240,7 +240,7 @@ build_type = executable</pre>
                         <h4><i class="fas fa-book"></i> Creating a Library</h4>
                         <div class="code-block">
                             <pre>compiler = g++
-compiler_flag = -Wall -std=c++17 -fPIC
+flags = -Wall -std=c++17 -fPIC
 build_file = libmylib.so
 source_file = lib.cpp helper.cpp
 build_dir = lib/
@@ -253,7 +253,7 @@ build_type = library</pre>
                         <h4><i class="fas fa-bug"></i> Debug Build</h4>
                         <div class="code-block">
                             <pre>compiler = g++
-compiler_flag = -Wall -g -O0 -std=c++17
+flags = -Wall -g -O0 -std=c++17
 build_file = debug_app
 source_file = main.cpp
 build_dir = debug/
@@ -284,9 +284,9 @@ build_type = executable</pre>
                         <td><code>compiler = g++</code></td>
                     </tr>
                     <tr>
-                        <td><code>compiler_flag</code></td>
+                        <td><code>flags</code></td>
                         <td>Compiler flags to use</td>
-                        <td><code>compiler_flag = -Wall -Werror -std=c++17</code></td>
+                        <td><code>flags = -Wall -Werror -std=c++17</code></td>
                     </tr>
                     <tr>
                         <td><code>build_file</code></td>

@@ -1,0 +1,5 @@
+compiler=gcc
+flags=-Wall -Werror
+build_file=main
+source_file=main.c main.h
+build_type=executable

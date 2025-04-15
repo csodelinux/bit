@@ -1,21 +1,24 @@
+
 * BIT
 /Make files made easier./
 ** Introduction
 *BIT* is a simpified version of make files with the soul intention of buiding projects made in *C++*. This project was inspired by [[https://github.com/tsoding/nob.h][tsoding]].
 Its intention is it to simplify the pain of making executables and linking them. 
+** Usage
+When working with many files and all you want to do is comiple and hate the idea of setting rules this helps you simplify the process
 ** Philsophy 
 Its philosophy lies with in the same unix philosophy do one thing and do it well. So instead of having make files with rules and targets all you need to do is define your file. It will handle all the rulling for you instead of you creating it.
 This idea make files are great but there was one issue if all I wanted to do was compile and build setting rules everytime feels like a hassle and well making a template my seem good having a tool for that is even better.
-** Build
+** Installation
 *** Stable branch (Recommended) : 
 This branch is the tried and tested one so clone the repo and run the curl script.  
 #+BEGIN_SRC bash
-curl -sSL https://github.com/csodelinux/bit/script/stable.sh | bash
+curl -sSL https://raw.githubusercontent.com/csodelinux/bit/main/scripts/stable.sh | bash
 #+END_SRC 
 *** DEV branch : 
 This branch is the tried and tested one so clone the repo and run the curl script.  
 #+BEGIN_SRC bash
-curl -sSL https://github.com/csodelinux/bit/script/dev.sh | bash
+curl -sSL https://raw.githubusercontent.com/csodelinux/bit/main/scripts/dev.sh | bash
 #+END_SRC 
 *** Source : 
 If you want to build it from source the instrutions are in [[file:docs/BUILD.org][build]].
@@ -40,10 +43,17 @@ Instruction on how to use it is fairly simple
 This project is licensed under the [[file:LICENSE.org][MIT LICENSE]] - see the LICENSE file for details.
 ** Contribution
 If you want to contribute to this project see the contribution page [[file:docs/contribution.org][contribution]].
+** Changelog
+Changes made can be found in [[file:docs/CHANGELOG.org][changelog]].
 ** Future improvement
 1. Handeling with different directories of header and source.
 2. Cross platform compatibily.
 3. Proper packaging and adding cmake as its build system.
+** Uninstallation 
+To remove the binary and all the packaging just run the follwing command
+   #+BEGIN_SRC bash
+    curl -sSL https://raw.githubusercontent.com/csodelinux/bit/main/scripts/uninstall.sh | bash
+   #+END_SRC 
 ** FAQ
 If you have questions and find an issue feel free to ask.
 ** Copyright

@@ -1,0 +1,3 @@
+compiler=gcc
+source_file=main.c
+build_type=executable

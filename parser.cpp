@@ -43,14 +43,28 @@ void compiler(std::vector<std::string> &lines, commands &build_command) {
         line, "compiler", build_command,
         [](commands &cmd, const std::string &value) { cmd.compiler = value; });
   }
+  if(build_command.compiler.empty()){
+    std::cout << "No compiler set" << std::endl;
+    exit(1);
+  }
+  else{
+    build_command.compiler = build_command.compiler + " ";
+  }
 }
 
 void compiler_flag(std::vector<std::string> &lines, commands &build_command) {
   for (const auto &line : lines) {
-    processCommand(line, "compiler_flag", build_command,
+    processCommand(line, "flags", build_command,
                    [](commands &cmd, const std::string &value) {
                      cmd.compile_flags = value;
                    });
+  }
+  if(build_command.compile_flags.empty()) {
+    std::cout << "No compiler flag set" << std::endl;
+    build_command.compile_flags="";
+  }
+  else{
+    build_command.compile_flags=build_command.compile_flags + " ";
   }
 }
 
@@ -60,9 +74,13 @@ void build_dir(std::vector<std::string> &lines, commands &build_command) {
         line, "build_dir", build_command,
         [](commands &cmd, const std::string &value) { cmd.build_dir = value; });
   }
-  if (build_command.build_dir == "")
+  if (build_command.build_dir.empty()){
+    std::cout << "No build directory set\n";
+    build_command.build_dir = "";
     return;
+  }
   make_dir(build_command.build_dir);
+  build_command.build_dir = build_command.build_dir + "/" ;
 }
 
 void build_file(std::vector<std::string> &lines, commands &build_command) {
@@ -72,6 +90,14 @@ void build_file(std::vector<std::string> &lines, commands &build_command) {
                      cmd.build_file = value;
                    });
   }
+  if(build_command.build_file.empty()){
+    build_command.build_file="app ";
+    std::cout << "No build file name specified" << std::endl;
+    std::cout << "Defaulting to "<< build_command.build_file << std::endl;
+  }
+  else{ 
+    build_command.build_file= build_command.build_file + " ";
+  }
 }
 
 void source_file(std::vector<std::string> &lines, commands &build_command) {
@@ -79,7 +105,11 @@ void source_file(std::vector<std::string> &lines, commands &build_command) {
     processCommand(line, "source_file", build_command,
                    [](commands &cmd, const std::string &value) {
                      cmd.source_file = value;
-                   });
+		   });
+  }
+  if(build_command.source_file.empty()){
+    std::cout << "No source file set\n";
+    exit(1);
   }
 }
 
@@ -88,12 +118,19 @@ void build_type(std::vector<std::string> &lines, commands &build_command) {
     processCommand(
         line, "build_type", build_command,
         [](commands &cmd, const std::string &value) {
-          if (value == "executable" || value == "library") {
-            cmd.build_type = value;
-          } else {
-            error("Invalid build type. Must be 'executable' or 'library'");
-          }
+	  if (value == "executable") {
+	    cmd.build_type = "-o " ;
+	  }
+	  else if (value == "library") {
+	    cmd.build_type = "-c " ;
+	  } else {
+	    error("Invalid build type. Must be 'executable' or 'library'");
+	  }
         });
+  }
+  if(build_command.build_type.empty()){
+    std::cout << "No build type set\n";
+    exit(1);
   }
 }
 
@@ -108,9 +145,9 @@ void exec(commands &build_command) {
     return;
   }
   std::string path = build_command.build_dir.c_str();
-  std::string cmd = build_command.compiler + " " + build_command.compile_flags +
-                    " " + build_command.source_file + build_command.build_type +
-                    build_command.build_dir + build_command.build_file;
+  std::string cmd = build_command.compiler + build_command.compile_flags +
+    build_command.build_type + build_command.build_dir + build_command.build_file + build_command.source_file ; 
+  std::cout << cmd << std::endl;
 
   if (system(cmd.c_str()) != 0) {
     error("Build command failed");

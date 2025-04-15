@@ -1,0 +1,7 @@
+* CHANGELOG
+** Version 0.1
+1. No need for us to add all the commands becasue it previously worked that way.
+2. Verbose error stating.
+3. Prints the command you are running.
+4. Added default values if left empty.
+5. Added help and version menu.

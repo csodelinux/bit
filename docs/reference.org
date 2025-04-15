@@ -2,7 +2,7 @@
 The following are the important *varaiable* to use. *Bit* does not allow us to create our own variable names. Instead we utilize a better approach which is using a predefined varaibles.
 The following are the current vara=iable names and their use case.
  1. /compiler/: The compiler to use (e.g., g++, clang++)
- 2. /compiler_flag/: Compiler flags to use
+ 2. /flags/: Compiler flags to use
  3. /build_file/: Name of the output file
  4. /build_dir/: Name of the output file
  5. /source_file/: Source file to compile

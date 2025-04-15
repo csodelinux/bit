@@ -1,8 +1,8 @@
 CXX = g++
-CXXFLAGS = -Wall -Werror -std=c++17
+CXXFLAGS = -Wall -Werror -std=c++17 
 
 TARGET = bit
-SRC = bit.cpp parser.cpp error.cpp 
+SRC = arguments.cpp bit.cpp parser.cpp error.cpp 
 
 PREFIX ?= /usr/local
 BINDIR = $(PREFIX)/bin
