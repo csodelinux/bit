@@ -17,7 +17,7 @@ perform_install() {
     log "Starting Bit installation using 'make system-install'..."
 
     if [ -f "Makefile" ]; then
-        sudo make system-install
+        make install
     else
         error "Makefile not found. Cannot continue installation."
     fi
