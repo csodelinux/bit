@@ -8,7 +8,7 @@ RED='\033[0;31m'
 RESET='\033[0m'
 
 REPO_URL="https://github.com/csodelinux/bit.git"
-CLONE_DIR="/tmp/bit-install-temp"
+INSTALL_DIR="/opt/bit"
 
 log()    { echo -e "${CYAN}[INFO]${RESET} $1"; }
 warn()   { echo -e "${YELLOW}[WARN]${RESET} $1"; }
@@ -20,29 +20,22 @@ ask_yes_no() {
     [[ "$response" =~ ^[Yy]$ ]]
 }
 
-# Clone the main branch
-log "Cloning the 'main' branch from Bit..."
-git clone --depth 1 --single-branch --branch main "$REPO_URL" "$CLONE_DIR"
+# Clone the main branch to /opt/bit
+log "Cloning the 'main' branch from Bit into ${INSTALL_DIR}..."
+sudo git clone --depth 1 --single-branch --branch main "$REPO_URL" "$INSTALL_DIR"
 
 if [ $? -ne 0 ]; then
     error "Failed to clone repository."
     exit 1
 fi
-success "Cloned successfully into ./${CLONE_DIR}"
+success "Cloned successfully into $INSTALL_DIR"
 
-# Run the installer from main branch
+# Run the installer
 log "Running installer from main branch..."
-cd "$CLONE_DIR"
-bash install.sh
+cd "$INSTALL_DIR"
+sudo bash install.sh
 
-cd ../..
+sudo rm -rf "$INSTALL_DIR"
+success "Removed the repository."
 
-# Ask to delete the folder
-if ask_yes_no "Would you like to remove the cloned 'bit' directory?"; then
-    rm -rf "$CLONE_DIR"
-    success "Removed the directory."
-else
-    log "Keeping the directory at ./${CLONE_DIR}"
-fi
-
-success "Main installation complete."
+success "Bit has been installed successfully."

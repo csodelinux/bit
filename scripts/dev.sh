@@ -38,11 +38,7 @@ bash install.sh
 cd ../..
 
 # Ask to delete the folder
-if ask_yes_no "Would you like to remove the cloned 'bit' directory?"; then
-    rm -rf "$CLONE_DIR"
-    success "Removed the directory."
-else
-    log "Keeping the directory at ./${CLONE_DIR}"
-fi
+sudo rm -rf "$CLONE_DIR"
+success "Removed the directory."
 
 success "Dev installation complete."

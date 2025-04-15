@@ -44,7 +44,6 @@ option_shower() {
 option_display() {
     echo -e "${CYAN}Bit Installer Options${RESET}"
     echo "a) System install (make install)"
-    echo "b) Local build (make build)"
     echo "r) Remove bit from system (/usr/local/bin/bit)"
     read -p "Choose an option [a/b/r]: " option
 
@@ -53,11 +52,6 @@ option_display() {
             print_section "Performing System Installation"
             make install
             success "System-wide installation complete!"
-            ;;
-        b)
-            print_section "Performing Local Build"
-            make build
-            success "Local build complete!"
             ;;
         r)
             print_section "Removing Bit"
@@ -69,7 +63,7 @@ option_display() {
             fi
             ;;
         *)
-            error "Invalid input. Please choose 'a', 'b', or 'r'."
+            error "Invalid input. Please choose 'a', or 'r'."
             sleep 1
             option_display  
             ;;
