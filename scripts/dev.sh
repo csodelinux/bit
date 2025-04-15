@@ -8,7 +8,7 @@ RED='\033[0;31m'
 RESET='\033[0m'
 
 REPO_URL="https://github.com/csodelinux/bit.git"
-CLONE_DIR="bit-main-temp"
+CLONE_DIR="bit-dev-temp"
 
 log()    { echo -e "${CYAN}[INFO]${RESET} $1"; }
 warn()   { echo -e "${YELLOW}[WARN]${RESET} $1"; }
@@ -20,9 +20,9 @@ ask_yes_no() {
     [[ "$response" =~ ^[Yy]$ ]]
 }
 
-# Clone the main branch
-log "Cloning the 'main' branch from Bit..."
-git clone --depth 1 --single-branch --branch main "$REPO_URL" "$CLONE_DIR"
+# Clone the dev branch
+log "Cloning the 'dev' branch from Bit..."
+git clone --depth 1 --single-branch --branch dev "$REPO_URL" "$CLONE_DIR"
 
 if [ $? -ne 0 ]; then
     error "Failed to clone repository."
@@ -30,14 +30,14 @@ if [ $? -ne 0 ]; then
 fi
 success "Cloned successfully into ./${CLONE_DIR}"
 
-# Run the installer from main branch
-log "Running installer from main branch..."
+# Run the installer from the dev branch
+log "Running installer from dev branch..."
 cd "$CLONE_DIR/scripts" || {
     error "Installer script not found!"
     exit 1
 }
 
-bash script/install.sh
+bash scripts/install.sh
 
 cd ../..
 
@@ -49,4 +49,4 @@ else
     log "Keeping the directory at ./${CLONE_DIR}"
 fi
 
-success "Main installation complete."
+success "Dev installation complete."
