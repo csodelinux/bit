@@ -1,0 +1,50 @@
+* BIT
+/Make files made easier./
+** Introduction
+*BIT* is a simpified version of make files with the soul intention of buiding projects made in *C++*. This project was inspired by [[https://github.com/tsoding/nob.h][tsoding]].
+Its intention is it to simplify the pain of making executables and linking them. 
+** Philsophy 
+Its philosophy lies with in the same unix philosophy do one thing and do it well. So instead of having make files with rules and targets all you need to do is define your file. It will handle all the rulling for you instead of you creating it.
+This idea make files are great but there was one issue if all I wanted to do was compile and build setting rules everytime feels like a hassle and well making a template my seem good having a tool for that is even better.
+** Build
+*** Stable branch (Recommended) : 
+This branch is the tried and tested one so clone the repo and run the curl script.  
+#+BEGIN_SRC bash
+curl -fsSL https://gitlab.com/csodelinux | sh
+#+END_SRC 
+*** DEV branch : 
+This branch is the tried and tested one so clone the repo and run the curl script.  
+#+BEGIN_SRC bash
+curl -fsSL https://gitlab.com/csodelinux | sh
+#+END_SRC 
+*** Source : 
+If you want to build it from source the instrutions are in [[file:docs/BUILD.org][build]].
+** Instruction
+Instruction on how to use it is fairly simple 
+1. First create a *build.bit* in your project directory.
+   #+BEGIN_SRC bash
+    touch build.bit
+   #+END_SRC 
+2. Open in in your favorite editor. Then add our rules. If you want to learn more about rules refer to the rules page [[file:docs/reference.org][reference]] section. 
+   #+BEGIN_SRC makefile
+    compiler=gcc
+    build_file=output
+    source_file=main.c
+    build_type=executable
+   #+END_SRC 
+3. Then simply run the command.
+   #+BEGIN_SRC bash
+    bit
+   #+END_SRC 
+**  License
+This project is licensed under the [[file:LICENSE.org][MIT LICENSE]] - see the LICENSE file for details.
+** Contribution
+If you want to contribute to this project see the contribution page [[file:docs/contribution.org][contribution]].
+** Future improvement
+1. Handeling with different directories of header and source.
+2. Cross platform compatibily.
+3. Proper packaging and adding cmake as its build system.
+** FAQ
+If you have questions and find an issue feel free to ask.
+** Copyright
+This document is copyrighted © 2025 by [csodelinux]. All rights reserved.

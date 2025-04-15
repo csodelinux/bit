@@ -1,0 +1,21 @@
+* BUILD
+
+** Clone the repository:
+Use the following command to clone the repository
+#+BEGIN_SRC bash
+git clone https://gitlab.com/csode/bit.git
+cd bit
+#+END_SRC
+
+2. Build the project:
+
+#+BEGIN_SRC bash
+make install 
+#+END_SRC
+
+3. Done it is installed successfully.
+** Dependency
+You need the following dependency to build it from source.
+- *makefiles*
+- *G++* or *clang++*
+- *C++ 17 compiler*
