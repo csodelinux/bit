@@ -15,11 +15,6 @@ warn()   { echo -e "${YELLOW}[WARN]${RESET} $1"; }
 error()  { echo -e "${RED}[ERROR]${RESET} $1"; }
 success(){ echo -e "${GREEN}[OK]${RESET} $1"; }
 
-ask_yes_no() {
-    read -p "$1 (y/n): " response
-    [[ "$response" =~ ^[Yy]$ ]]
-}
-
 # Clone the main branch to /opt/bit
 log "Cloning the 'main' branch from Bit into ${INSTALL_DIR}..."
 sudo git clone --depth 1 --single-branch --branch main "$REPO_URL" "$INSTALL_DIR"
@@ -35,6 +30,8 @@ log "Running installer from main branch..."
 cd "$INSTALL_DIR"
 sudo bash install.sh
 
+# Remove the cloned directory
+log "Cleaning up..."
 sudo rm -rf "$INSTALL_DIR"
 success "Removed the repository."
 
