@@ -30,7 +30,7 @@ fi
 # Remove binary
 if [ -f "$BIN_PATH" ]; then
     sudo rm -f "$BIN_PATH"
-    success "Removed Bit binary: $BIN_PATH"
+    success "Removed Bit binary at : $BIN_PATH"
 else
     warn "Bit binary not found at $BIN_PATH"
 fi
