@@ -751,3 +751,37 @@ body.dark-mode code {
 .back-to-top:hover {
   transform: translateY(-5px);
 }
+body.dark-mode .code-block {
+  background-color: #0f172a;
+}
+
+body.dark-mode .code-block pre {
+  color: #e2e8f0; 
+}
+
+body.dark-mode .copy-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+}
+
+body.dark-mode .copy-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .install-option .code-block {
+  background-color: #1e293b; 
+}
+
+body.dark-mode .install-option {
+  background-color: #334155; 
+  border-color: #475569; 
+}
+
+body.dark-mode .install-option:hover {
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow);
+}
+
+body.dark-mode .install-icon {
+  color: var(--primary-light); 
+}

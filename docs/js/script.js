@@ -1,62 +1,44 @@
-// Tab functionality for documentation
 function openTab(event, tabId) {
-    // Hide all tab content
     const tabContents = document.querySelectorAll('.tab-content');
     tabContents.forEach(content => {
         content.classList.remove('active');
     });
-
-    // Remove active class from all tab buttons
     const tabButtons = document.querySelectorAll('.tab-button');
     tabButtons.forEach(button => {
         button.classList.remove('active');
     });
-
-    // Show the selected tab content and mark button as active
     document.getElementById(tabId).classList.add('active');
     event.currentTarget.classList.add('active');
 }
 
-// Copy to clipboard functionality
 function copyToClipboard(buttonElement) {
-    // Find the pre element that's a sibling of the button
     const preElement = buttonElement.parentElement.querySelector('pre');
     
-    // Create a temporary textarea element to copy from
     const textarea = document.createElement('textarea');
     textarea.value = preElement.textContent;
     document.body.appendChild(textarea);
     
-    // Select and copy the text
     textarea.select();
     document.execCommand('copy');
     
-    // Remove the temporary textarea
     document.body.removeChild(textarea);
     
-    // Show feedback by temporarily changing button icon
     const originalIcon = buttonElement.innerHTML;
     buttonElement.innerHTML = '<i class="fas fa-check"></i>';
     
-    // Reset the button after a short delay
     setTimeout(() => {
         buttonElement.innerHTML = originalIcon;
     }, 1500);
 }
 
-// Arrange examples vertically
 function arrangeExamplesVertically() {
-    // Get the examples container
     const examplesContainer = document.querySelector('.examples-container');
     
     if (examplesContainer) {
-        // Add a class to the container for vertical styling
         examplesContainer.classList.add('vertical-layout');
         
-        // Get all example items
         const examples = examplesContainer.querySelectorAll('.example');
         
-        // Apply styles to make them stack vertically
         examples.forEach(example => {
             example.style.width = '100%';
             example.style.marginBottom = '20px';
@@ -64,9 +46,7 @@ function arrangeExamplesVertically() {
     }
 }
 
-// Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
-    // Arrange examples vertically
     arrangeExamplesVertically();
     
     const navLinks = document.querySelectorAll('nav a');
@@ -75,12 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Get the target element's ID from the href attribute
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
             
             if (targetElement) {
-                // Smooth scroll to target
                 window.scrollTo({
                     top: targetElement.offsetTop - 80, // Offset for header
                     behavior: 'smooth'
@@ -89,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Handle initial tab state based on URL hash
     if (window.location.hash && window.location.hash.includes('documentation')) {
         const tabId = window.location.hash.split('-')[1];
         if (tabId && document.getElementById(tabId)) {
@@ -101,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Initialize any tabs if needed
     const activeTabs = document.querySelectorAll('.tab-button.active');
     if (activeTabs.length === 0) {
         const firstTab = document.querySelector('.tab-button');
@@ -111,9 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Add animation to features section when scrolled into view
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to check if element is in viewport
     function isInViewport(element) {
         const rect = element.getBoundingClientRect();
         return (
@@ -124,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
     
-    // Function to handle scroll animations
     function handleScrollAnimations() {
         const features = document.querySelectorAll('.feature');
         
@@ -142,14 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Run once on load
     handleScrollAnimations();
     
-    // Add scroll event listener
     window.addEventListener('scroll', handleScrollAnimations);
 });
 
-// Add active state to navigation based on scroll position
 document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section[id]');
     
@@ -162,12 +132,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const sectionId = section.getAttribute('id');
             
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                // Remove active class from all nav items
                 document.querySelectorAll('nav a').forEach(navItem => {
                     navItem.classList.remove('active');
                 });
                 
-                // Add active class to current nav item
                 const correspondingNavItem = document.querySelector(`nav a[href="#${sectionId}"]`);
                 if (correspondingNavItem) {
                     correspondingNavItem.classList.add('active');
@@ -177,4 +145,52 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     window.addEventListener('scroll', highlightNavOnScroll);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedDarkMode = localStorage.getItem('darkMode');
+    
+    const darkModeToggle = document.createElement('button');
+    darkModeToggle.className = 'dark-mode-toggle';
+    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    document.body.appendChild(darkModeToggle);
+    
+    if (savedDarkMode === 'true' || (savedDarkMode === null && prefersDarkMode)) {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+    
+    darkModeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+        
+        if (isDarkMode) {
+            this.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            this.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    });
+    
+    const backToTopButton = document.createElement('button');
+    backToTopButton.className = 'back-to-top';
+    backToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    document.body.appendChild(backToTopButton);
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+    
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });
