@@ -1,4 +1,3 @@
-
 * BIT
 /Make files made easier./
 ** Introduction

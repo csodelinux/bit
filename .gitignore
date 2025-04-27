@@ -1,5 +1,8 @@
 bit
+bit.iss
 venv
 build/
 ./cache
 test/
+bin/
+website/

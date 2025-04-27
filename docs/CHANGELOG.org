@@ -5,3 +5,7 @@
 3. Prints the command you are running.
 4. Added default values if left empty.
 5. Added help and version menu.
+** Version 1.0
+1. Added windows installer
+2. Compied and transitioned cmake instead of make
+3. Packaged files for easier access
