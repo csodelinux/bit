@@ -2,3 +2,4 @@ bit
 venv
 build/
 ./cache
+test/
