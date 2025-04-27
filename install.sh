@@ -40,7 +40,7 @@ command -v make >/dev/null 2>&1 || { echo -e "${RED}Error: make is required but 
 
 # Clone the repository
 echo "Downloading source code..."
-git clone https://github.com/yourusername/bit.git
+git clone https://github.com/csodelinux/bit.git
 cd bit
 
 # Create build directory

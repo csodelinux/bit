@@ -1,0 +1,37 @@
+#+TITLE: BIT Release Notes
+#+AUTHOR: csodelinux
+#+DATE: 2025
+
+* BIT - Makefiles Made Easier
+BIT is a simple tool that automates building C++ projects without the need for complex Makefiles.
+
+* Latest Release
+** Version 1.0 (Current)
+- Added Windows installer support.
+- Transitioned build system from Make to CMake.
+- Packaged files for easier access and installation.
+
+** Previous Versions
+*** Version 0.1
+- No longer requires manually entering full compile commands.
+- Improved verbose error messages.
+- Prints the commands being run for transparency.
+- Added default values when fields are left empty.
+- Added help and version menus for easier usage.
+
+* License
+MIT License - see [[file:LICENSE.org][LICENSE]] for details.
+
+* How to Install
+#+BEGIN_SRC bash
+curl -sSL https://raw.githubusercontent.com/csodelinux/bit/main/install.sh | bash
+#+END_SRC
+
+* How to Uninstall
+#+BEGIN_SRC bash
+curl -sSL https://raw.githubusercontent.com/csodelinux/bit/main/scripts/uninstall.sh | bash
+#+END_SRC
+
+* Notes
+For more information, visit the [[file:docs/reference.org][documentation]].
+
