@@ -12,15 +12,8 @@ This idea make files are great but there was one issue if all I wanted to do was
 *** Stable branch (Recommended) : 
 This branch is the tried and tested one so clone the repo and run the curl script.  
 #+BEGIN_SRC bash
-curl -sSL https://raw.githubusercontent.com/csodelinux/bit/main/scripts/stable.sh | bash
+curl -sSL https://raw.githubusercontent.com/csodelinux/bit/main/install.sh | bash
 #+END_SRC 
-*** DEV branch : 
-This branch is the tried and tested one so clone the repo and run the curl script.  
-#+BEGIN_SRC bash
-curl -sSL https://raw.githubusercontent.com/csodelinux/bit/main/scripts/dev.sh | bash
-#+END_SRC 
-*** Source : 
-If you want to build it from source the instrutions are in [[file:docs/BUILD.org][build]].
 ** Instruction
 Instruction on how to use it is fairly simple 
 1. First create a *build.bit* in your project directory.
