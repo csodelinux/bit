@@ -7,7 +7,7 @@ Its intention is it to simplify the pain of making executables and linking them.
 ** Usage
 When working with many files and all you want to do is comiple and hate the idea of setting rules this helps you simplify the process
 ** Philsophy 
-Its philosophy lies with in the same unix philosophy do one thing and do it well. So instead of having make files with rules and targets all you need to do is define your file. It will handle all the rulling for you instead of you creating it.
+Its philosophy lies with in the same unix philosophy do one thing and do it well. So instead of having make files with rules and targets all you need to do is define your file. It will handle all the ruleing for you instead of you creating it.
 This idea make files are great but there was one issue if all I wanted to do was compile and build setting rules everytime feels like a hassle and well making a template my seem good having a tool for that is even better.
 ** Installation
 *** Stable branch (Recommended) : 
