@@ -3,8 +3,8 @@
 #include <filesystem>
 #include <fstream>
 #include <functional>
+#include <stdlib.h>
 #include <string>
-#include <vector>
 
 struct commands {
   std::string compiler;

@@ -1,10 +1,10 @@
+#include "arguments.hpp"
 #include "error.hpp"
 #include "parser.hpp"
-#include "arguments.hpp"
 #include <iostream>
 
-int main(int args, char * argv[]) {
-  if(args > 1) {
+int main(int args, char *argv[]) {
+  if (args > 1) {
     help_instruction(argv[1]);
     return 0;
   }

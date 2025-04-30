@@ -44,7 +44,8 @@ void compiler(std::vector<std::string> &lines, commands &build_command) {
         [](commands &cmd, const std::string &value) { cmd.compiler = value; });
   }
   if (build_command.compiler.empty()) {
-    std::cout << "No compiler is set" << std::endl;
+    error("No compiler is set");
+    hint("Please consider adding a compiler");
     exit(1);
   } else {
     build_command.compiler = build_command.compiler + " ";
@@ -59,7 +60,7 @@ void compiler_flag(std::vector<std::string> &lines, commands &build_command) {
                    });
   }
   if (build_command.compile_flags.empty()) {
-    std::cout << "No compiler flag set" << std::endl;
+    warning("No compiler flag set. Setting default");
     build_command.compile_flags = "";
   } else {
     build_command.compile_flags = build_command.compile_flags + " ";
@@ -73,7 +74,7 @@ void build_dir(std::vector<std::string> &lines, commands &build_command) {
         [](commands &cmd, const std::string &value) { cmd.build_dir = value; });
   }
   if (build_command.build_dir.empty()) {
-    std::cout << "No build directory set\n";
+    warning("No build directory set. Setting default");
     build_command.build_dir = "";
     return;
   }
@@ -90,8 +91,7 @@ void build_file(std::vector<std::string> &lines, commands &build_command) {
   }
   if (build_command.build_file.empty()) {
     build_command.build_file = "app ";
-    std::cout << "No build file name specified" << std::endl;
-    std::cout << "Defaulting to " << build_command.build_file << std::endl;
+    warning("No build file name specified. Defaulting to name app.");
   } else {
     build_command.build_file = build_command.build_file + " ";
   }
@@ -105,7 +105,7 @@ void source_file(std::vector<std::string> &lines, commands &build_command) {
                    });
   }
   if (build_command.source_file.empty()) {
-    std::cout << "No source file set\n";
+    error("No source file set");
     exit(1);
   }
 }
@@ -125,7 +125,7 @@ void build_type(std::vector<std::string> &lines, commands &build_command) {
         });
   }
   if (build_command.build_type.empty()) {
-    std::cout << "No build type set\n";
+    error("No build type set");
     exit(1);
   }
 }
@@ -144,8 +144,8 @@ void exec(commands &build_command) {
   std::string cmd = build_command.compiler + build_command.compile_flags +
                     build_command.build_type + build_command.build_dir +
                     build_command.build_file + build_command.source_file;
-  std::cout << cmd << std::endl;
-
+  build_info("Running: " + cmd);
+  
   if (system(cmd.c_str()) != 0) {
     error("Build command failed");
   }
